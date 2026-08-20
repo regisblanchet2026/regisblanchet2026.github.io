@@ -1,19 +1,7 @@
 (function () {
   "use strict";
 
-  /* ------------------------------------------------------------------
-     Nav bar : fond au scroll
-     ------------------------------------------------------------------ */
-  var nav = document.getElementById("siteNav");
-  function onScrollNav() {
-    if (window.scrollY > 40) {
-      nav.classList.add("is-scrolled");
-    } else {
-      nav.classList.remove("is-scrolled");
-    }
-  }
-  window.addEventListener("scroll", onScrollNav, { passive: true });
-  onScrollNav();
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ------------------------------------------------------------------
      Révélation au scroll
@@ -44,6 +32,60 @@
     revealTargets.forEach(function (el) {
       el.classList.add("is-visible");
     });
+  }
+
+  /* ------------------------------------------------------------------
+     Carrousel hero (deux photos)
+     ------------------------------------------------------------------ */
+  var carousel = document.getElementById("heroCarousel");
+  if (carousel) {
+    var slides = carousel.querySelectorAll(".hero-slide");
+    var dots = carousel.querySelectorAll(".hero-dot");
+    var current = 0;
+    var timer = null;
+    var DELAY = 3000;
+
+    function goToSlide(index) {
+      slides[current].classList.remove("is-active");
+      dots[current].classList.remove("is-active");
+      dots[current].setAttribute("aria-selected", "false");
+      current = index;
+      slides[current].classList.add("is-active");
+      dots[current].classList.add("is-active");
+      dots[current].setAttribute("aria-selected", "true");
+    }
+
+    function nextSlide() {
+      goToSlide((current + 1) % slides.length);
+    }
+
+    function startAutoplay() {
+      if (reduceMotion || slides.length < 2) return;
+      stopAutoplay();
+      timer = setInterval(nextSlide, DELAY);
+    }
+
+    function stopAutoplay() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    dots.forEach(function (dot) {
+      dot.addEventListener("click", function () {
+        var idx = parseInt(dot.getAttribute("data-go-to"), 10);
+        if (idx !== current) goToSlide(idx);
+        startAutoplay();
+      });
+    });
+
+    carousel.addEventListener("mouseenter", stopAutoplay);
+    carousel.addEventListener("mouseleave", startAutoplay);
+    carousel.addEventListener("focusin", stopAutoplay);
+    carousel.addEventListener("focusout", startAutoplay);
+
+    startAutoplay();
   }
 
   /* ------------------------------------------------------------------
