@@ -10,7 +10,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Régis Blanchet — Candidat aux élections sénatoriales">
 <meta property="og:description" content="La force de l'expérience. La voix de l'Indre. Candidat aux élections sénatoriales du 27 septembre 2026 dans l'Indre.">
-<meta property="og:image" content="images/hero-photo.jpg">
+<meta property="og:image" content="images/hero-photo-1.jpg">
 <meta property="og:locale" content="fr_FR">
 
 <!-- Favicon -->
@@ -31,34 +31,54 @@
 <!-- Skip link -->
 <a class="skip-link" href="#contenu">Aller au contenu principal</a>
 
-<!-- ============ NAVIGATION ============ -->
-<header class="site-nav" id="siteNav">
-  <div class="nav-inner">
-    <a href="#top" class="nav-mark" aria-label="Retour en haut de page">
-      <span class="nav-mark-initials">RB</span><span class="nav-mark-year">2026</span>
-    </a>
-    <nav aria-label="Navigation principale">
-      <ul class="nav-links">
-        <li><a href="#soutiens">Soutiens</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#reseaux">Suivre la campagne</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
 <main id="contenu">
+
+  <!-- ============ RÉSEAUX SOCIAUX ============ -->
+  <section class="section social-section social-section-first" id="reseaux" aria-label="Réseaux sociaux">
+    <div class="section-inner social-inner">
+      <h2 class="social-title">Suivez notre actualité</h2>
+      <ul class="social-list">
+        <li>
+          <a href="https://www.facebook.com/profile.php?id=61592888324703" class="social-link" aria-label="Facebook — Régis Blanchet 2026" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 9h2.5V5.8h-2.7C11 5.8 10 7.4 10 9.6V11H8v3.4h2V21h3.4v-6.6H16l.5-3.4h-3V10c0-.6.3-1 1-1z" fill="currentColor"/></svg>
+            <span>Facebook</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/regis_blanchet_2026/" class="social-link" aria-label="Instagram — Régis Blanchet 2026" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="1.4"/><circle cx="16.9" cy="7.1" r="1.1" fill="currentColor"/></svg>
+            <span>Instagram</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/r%C3%A9gis-blanchet-agirpourlindre/" class="social-link" aria-label="LinkedIn — Régis Blanchet 2026" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.98 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM3.5 9.6h3v10.4h-3zM9.9 9.6h2.9v1.4h.04c.4-.75 1.4-1.55 2.9-1.55 3.1 0 3.66 2 3.66 4.7v5.85h-3v-5.2c0-1.24-.02-2.83-1.73-2.83-1.73 0-2 1.35-2 2.74v5.29h-3V9.6z" fill="currentColor"/></svg>
+            <span>LinkedIn</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
 
   <!-- ============ HERO ============ -->
   <section class="hero" id="hero" aria-label="Présentation">
-    <div class="hero-photo-frame">
-      <img src="images/hero-photo.jpg" alt="Régis Blanchet, souriant, dans un parc" class="hero-photo-img">
+    <div class="hero-photo-frame" id="heroCarousel">
+      <div class="hero-slide is-active" data-slide="0">
+        <img src="images/hero-photo-1.jpg" alt="Régis Blanchet, souriant, dans un parc" class="hero-photo-img">
+      </div>
+      <div class="hero-slide" data-slide="1">
+        <img src="images/hero-photo-2.jpg" alt="Régis Blanchet et Géraldine Rouah, côte à côte dans un parc" class="hero-photo-img">
+      </div>
+      <div class="hero-dots" role="tablist" aria-label="Choisir une photo">
+        <button type="button" class="hero-dot is-active" role="tab" aria-selected="true" aria-label="Photo 1 : Régis Blanchet" data-go-to="0"></button>
+        <button type="button" class="hero-dot" role="tab" aria-selected="false" aria-label="Photo 2 : Régis Blanchet et Géraldine Rouah" data-go-to="1"></button>
+      </div>
     </div>
     <div class="hero-content">
       <h1 class="sr-only">Régis Blanchet, candidat aux élections sénatoriales, avec sa suppléante Géraldine Rouah</h1>
       <p class="hero-eyebrow">Élections sénatoriales · Dimanche 27 septembre 2026</p>
       <blockquote class="hero-quote">
-        <p>Votre choix du 27 septembre engage la représentation de notre territoire pour les années à venir. Je sollicite votre soutien et je m'engage à exercer mon mandat avec exigence, disponibilité et fidélité.</p>
+        <p>Votre choix du 27 septembre engage la représentation de notre territoire pour les années à venir. Avec ma suppléante Géraldine Rouah, je sollicite votre soutien et m'engage à exercer mon mandat avec exigence, disponibilité et fidélité.</p>
         <cite>Régis Blanchet</cite>
       </blockquote>
     </div>
@@ -76,7 +96,7 @@
         </button>
       </div>
       <div class="journal-text">
-        <p class="eyebrow">Soutiens</p>
+        <h2>Soutiens</h2>
         <p class="journal-lede">Marc Fleuret, président du Conseil départemental de l'Indre, Hervé Morin, président des Centristes, et David Lisnard, président de Nouvelle Énergie, apportent leur soutien à la candidature de Régis Blanchet.</p>
       </div>
     </div>
@@ -115,36 +135,7 @@
     </div>
   </section>
 
-  <!-- ============ RÉSEAUX SOCIAUX ============ -->
-  <section class="section social-section" id="reseaux" aria-label="Réseaux sociaux">
-    <div class="section-inner social-inner">
-      <p class="eyebrow eyebrow-light">Suivre la campagne</p>
-      <h2 class="social-title">Suivez notre actualité</h2>
-      <ul class="social-list">
-        <li>
-          <a href="https://www.facebook.com/profile.php?id=61592888324703" class="social-link" aria-label="Facebook — Régis Blanchet 2026" target="_blank" rel="noopener">            <span>Facebook</span>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.instagram.com/regis_blanchet_2026/" class="social-link" aria-label="Instagram — Régis Blanchet 2026" target="_blank" rel="noopener">            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="1.4"/><circle cx="16.9" cy="7.1" r="1.1" fill="currentColor"/></svg>
-            <span>Instagram</span>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.linkedin.com/in/r%C3%A9gis-blanchet-agirpourlindre/" class="social-link" aria-label="LinkedIn — Régis Blanchet 2026" target="_blank" rel="noopener">            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.98 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM3.5 9.6h3v10.4h-3zM9.9 9.6h2.9v1.4h.04c.4-.75 1.4-1.55 2.9-1.55 3.1 0 3.66 2 3.66 4.7v5.85h-3v-5.2c0-1.24-.02-2.83-1.73-2.83-1.73 0-2 1.35-2 2.74v5.29h-3V9.6z" fill="currentColor"/></svg>
-            <span>LinkedIn</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </section>
-
 </main>
-
-<!-- ============ FOOTER ============ -->
-<footer class="site-footer">
-  <p>Régis Blanchet — Élections sénatoriales 2026</p>
-</footer>
 
 <!-- ============ LIGHTBOX (agrandir la page de soutiens) ============ -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Page de soutiens en grand" hidden>
