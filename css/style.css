@@ -13,6 +13,7 @@
   --ink-soft: #55585d;
   --terracotta: #BD8B57;      /* accent décoratif : filets, icônes, fonds sombres */
   --terracotta-deep: #8A5A2E; /* accent texte, conforme au contraste sur fond clair */
+  --tie-bordeaux: #983F49;    /* bordeaux échantillonné sur la cravate de Régis, touche discrète */
   --line: rgba(19, 45, 89, 0.12);
   --shadow: 0 18px 45px rgba(19, 45, 89, 0.10);
   --shadow-soft: 0 8px 24px rgba(19, 45, 89, 0.08);
@@ -21,7 +22,6 @@
   --font-display: "Cormorant Garamond", "Times New Roman", serif;
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --container: 1140px;
-  --nav-h: 76px;
 }
 
 * { box-sizing: border-box; }
@@ -129,85 +129,6 @@ button {
 }
 
 /* ==========================================================================
-   NAVIGATION
-   ========================================================================== */
-.site-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: var(--nav-h);
-  z-index: 200;
-  display: flex;
-  align-items: center;
-  background: rgba(248, 248, 246, 0.86);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 1px 0 rgba(19, 45, 89, 0.06);
-  transition: background 0.35s ease, box-shadow 0.35s ease, height 0.35s ease;
-}
-.site-nav.is-scrolled {
-  background: rgba(248, 248, 246, 0.94);
-  box-shadow: 0 2px 20px rgba(19, 45, 89, 0.08);
-  height: 64px;
-}
-.nav-inner {
-  width: 100%;
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: 0 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.nav-mark {
-  display: flex;
-  align-items: baseline;
-  gap: 4px;
-  font-family: var(--font-display);
-  color: var(--navy);
-}
-.nav-mark-initials {
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-.nav-mark-year {
-  font-size: 0.85rem;
-  color: var(--terracotta-deep);
-  font-weight: 600;
-}
-.nav-links {
-  list-style: none;
-  display: none;
-  gap: 36px;
-  margin: 0;
-  padding: 0;
-}
-.nav-links a {
-  font-size: 0.92rem;
-  font-weight: 500;
-  color: var(--navy);
-  position: relative;
-}
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  left: 0; right: 0; bottom: -6px;
-  height: 1px;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
-}
-.nav-links a:hover::after,
-.nav-links a:focus-visible::after {
-  transform: scaleX(1);
-}
-@media (min-width: 720px) {
-  .nav-links { display: flex; }
-}
-
-/* ==========================================================================
    BOUTONS
    ========================================================================== */
 .btn {
@@ -256,22 +177,63 @@ button {
    HERO
    ========================================================================== */
 .hero {
-  padding-top: var(--nav-h);
+  padding-top: 40px;
+  padding-bottom: 8px;
   background: var(--navy-deep);
 }
 .hero-photo-frame {
-  width: 100%;
-  height: 46vh;
-  min-height: 320px;
-  max-height: 620px;
+  position: relative;
+  width: 88%;
+  max-width: 420px;
+  margin: 0 auto;
+  aspect-ratio: 4 / 5;
+  border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+}
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+.hero-slide.is-active {
+  opacity: 1;
+  z-index: 1;
 }
 .hero-photo-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 52% 22%;
+  object-position: 50% 12%;
   display: block;
+}
+.hero-dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 16px;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+}
+.hero-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(248, 248, 246, 0.45);
+  border: 1.5px solid rgba(248, 248, 246, 0.7);
+  padding: 0;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.hero-dot.is-active {
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+  transform: scale(1.15);
+}
+@media (min-width: 720px) {
+  .hero-photo-frame { max-width: 480px; }
 }
 .hero-content {
   max-width: var(--container);
@@ -334,9 +296,6 @@ button {
 .hero .btn-ghost:hover {
   border-color: var(--cream);
   background: rgba(248, 248, 246, 0.08);
-}
-@media (min-width: 720px) {
-  .hero-photo-frame { height: 58vh; }
 }
 
 /* ==========================================================================
@@ -533,12 +492,20 @@ button {
    RÉSEAUX SOCIAUX
    ========================================================================== */
 .social-section {
-  background: var(--navy);
+  background: var(--cream);
   text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+.social-section-first {
+  margin-top: 24px;
+  padding-top: 40px;
+}
+@media (max-width: 640px) {
+  .social-section-first { margin-top: 12px; }
 }
 .social-title {
-  color: #fff;
-  font-size: clamp(1.8rem, 3.4vw, 2.4rem);
+  color: var(--navy);
+  font-size: clamp(1.9rem, 3.6vw, 2.6rem);
   margin-bottom: 40px;
 }
 .social-list {
@@ -556,30 +523,25 @@ button {
   gap: 10px;
   width: 108px;
   padding: 22px 10px;
-  border: 1px solid rgba(248, 248, 246, 0.18);
+  background: var(--cream-alt);
+  border: 1.5px solid var(--tie-bordeaux);
   border-radius: var(--radius);
-  color: var(--cream);
+  color: var(--navy);
   font-size: 0.85rem;
-  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+  font-weight: 500;
+  transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease, transform 0.25s ease;
 }
-.social-link svg { width: 24px; height: 24px; }
+.social-link svg { width: 24px; height: 24px; color: var(--tie-bordeaux); transition: color 0.25s ease; }
 .social-link:hover,
 .social-link:focus-visible {
-  border-color: var(--terracotta);
-  background: rgba(248, 248, 246, 0.06);
+  border-color: var(--navy);
+  background: var(--navy);
+  color: #fff;
   transform: translateY(-3px);
 }
-
-/* ==========================================================================
-   FOOTER
-   ========================================================================== */
-.site-footer {
-  background: var(--navy-deep);
-  color: rgba(248, 248, 246, 0.6);
-  text-align: center;
-  padding: 26px 24px;
-  font-size: 0.85rem;
-  letter-spacing: 0.02em;
+.social-link:hover svg,
+.social-link:focus-visible svg {
+  color: #fff;
 }
 
 /* ==========================================================================
